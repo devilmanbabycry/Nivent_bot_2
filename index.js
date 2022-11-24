@@ -39,7 +39,6 @@ const start = async () => {
         }
 
         if (text === '/list') {
-
             await bot.sendMessage(chatId, 'Мероприятия можно посмотреть ниже', {
                 reply_markup: {
                     inline_keyboard: [
@@ -101,6 +100,7 @@ const start = async () => {
     app.get('/web-data', async (req, res) => {
         const events = await EventModel.findAll()
 
+        res.send('Все мероприятия: ')
         res.json(events.event)
         console.log(events.event)
     })
