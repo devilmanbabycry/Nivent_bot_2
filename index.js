@@ -101,8 +101,8 @@ const start = async () => {
         const events = await EventModel.findAll()
 
         res.send('Все мероприятия: ')
-        res.json(events.event)
-        console.log(events.event)
+        res.json(events)
+        console.log(events)
     })
 
     app.post('/web-data', async (req, res) => {
