@@ -10,7 +10,8 @@ const Event = sequelize.define('event', {
     address: {type: DataTypes.STRING},
     subject: {type: DataTypes.STRING},
 }, {
-    timestamps: false
+    timestamps: false,
+    createdAt: false,
 })
 
 module.exports = Event;
