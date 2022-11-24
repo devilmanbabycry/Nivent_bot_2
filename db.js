@@ -1,7 +1,5 @@
 const {Sequelize} = require('sequelize');
 
-
-
 module.exports = new Sequelize(
     'telega_bot_db',
     'root',
