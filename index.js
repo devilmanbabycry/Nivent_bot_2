@@ -68,11 +68,11 @@ const start = async () => {
                 const data = JSON.parse(msg?.web_app_data?.data)
                 console.log(data)
 
-                const newEvent = await EventModel.create(
+            /*    const newEvent = await EventModel.create(
                     'INSERT INTO event (name, info, date, time, address, subject) values ($1, $2, $3, $4, $5, $6) RETURNING *',
                     [data.name, data.info, data.date, data.time, data.address, data.subject]
                 )
-                console.log(newEvent)
+                console.log(newEvent) */
 
                 await bot.sendMessage(chatId, 'Вы создали мероприятие!')
                 await bot.sendMessage(chatId, 'Информация о созданном мероприятии: ');
