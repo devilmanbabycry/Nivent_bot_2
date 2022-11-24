@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const token = '5727297877:AAHXOLPsFjTNl80Dmmqz7PONLVUQ6e2dXKQ';
 const webAppUrl = 'https://unrivaled-zabaione-164aa2.netlify.app/';
+const webAppUrlForm = 'https://unrivaled-zabaione-164aa2.netlify.app/form';
 
 const bot = new TelegramBot(token, {polling: true});
 const app = express();
@@ -23,18 +24,30 @@ bot.on('message', async (msg) => {
     const text = msg.text;
 
     if(text === '/start') {
-        await bot.sendMessage(chatId, 'Ниже появится кнопка, заполни форму', {
+        await bot.sendMessage(chatId, 'Бот находится в разработке, загляните позже');
+    }
+
+    if(text === '/list'){
+        await bot.sendMessage(chatId, 'Мероприятия можно посмотреть ниже', {
             reply_markup: {
-                keyboard: [
-                    [{text: 'Заполнить форму', web_app: {url: webAppUrl + '/form'}}]
+                inline_keyboard: [
+                    [{text: 'Мероприятия', web_app: {url: webAppUrl}}]
                 ]
             }
         })
+    }
 
-        await bot.sendMessage(chatId, 'Заходи в наш интернет магазин по кнопке ниже', {
+    if(text === '/info'){
+        await bot.sendMessage(chatId, 'Информация о проекте (добавим потом)');
+    }
+
+    if(text === '/create'){
+        await bot.sendMessage(chatId, 'Введите информацию о мероприятии в форме ниже.', {
             reply_markup: {
-                inline_keyboard: [
-                    [{text: 'Сделать заказ', web_app: {url: webAppUrl}}]
+                one_time_keyboard: true,
+                resize_keyboard: true,
+                keyboard: [
+                    [{text: 'Форма для создания мероприятий', web_app: {url: webAppUrlForm}}],
                 ]
             }
         })
@@ -44,19 +57,25 @@ bot.on('message', async (msg) => {
         try {
             const data = JSON.parse(msg?.web_app_data?.data)
             console.log(data)
-            await bot.sendMessage(chatId, 'Спасибо за обратную связь!')
-            await bot.sendMessage(chatId, 'Ваша страна: ' + data?.country);
-            await bot.sendMessage(chatId, 'Ваша улица: ' + data?.street);
+            await bot.sendMessage(chatId, 'Вы создали мероприятие!')
+            await bot.sendMessage(chatId, 'Информация о созданном мероприятии: ');
 
             setTimeout(async () => {
-                await bot.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
-            }, 3000)
+                await bot.sendMessage(chatId, 'Название: ' + data.name);
+                await bot.sendMessage(chatId, 'Информация: ' + data.info);
+                await bot.sendMessage(chatId, 'Дата: ' + data.date);
+                await bot.sendMessage(chatId, 'Время: ' + data.time);
+                //await bot.sendMessage(chatId, 'Ссылка на онлайн мероприятие: ' + data.link);
+                await bot.sendMessage(chatId, 'Адрес: ' + data.address);
+                await bot.sendMessage(chatId, 'Тег: ' + data.subject);
+            }, 1000)
         } catch (e) {
             console.log(e);
         }
     }
 });
 
+/*
 app.post('/web-data', async (req, res) => {
     const {queryId, products = [], totalPrice} = req.body;
     try {
@@ -72,7 +91,7 @@ app.post('/web-data', async (req, res) => {
     } catch (e) {
         return res.status(500).json({})
     }
-})
+}) */
 
 const PORT = 8000;
 
