@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const sequelize = require('./db');
 const EventModel = require('./models')
+const {Sequelize} = require("sequelize");
 
 const token = '5727297877:AAHXOLPsFjTNl80Dmmqz7PONLVUQ6e2dXKQ';
 const webAppUrl = 'https://unrivaled-zabaione-164aa2.netlify.app/';
@@ -38,6 +39,7 @@ const start = async () => {
         }
 
         if (text === '/list') {
+
             await bot.sendMessage(chatId, 'Мероприятия можно посмотреть ниже', {
                 reply_markup: {
                     inline_keyboard: [
@@ -96,7 +98,13 @@ const start = async () => {
         }
     });
 
-    /*
+    app.get('/web-data', async (req, res) => {
+        const events = await EventModel.findAll()
+
+        res.json(events.event)
+        console.log(events.event)
+    })
+
     app.post('/web-data', async (req, res) => {
         const {queryId, products = [], totalPrice} = req.body;
         try {
@@ -112,7 +120,7 @@ const start = async () => {
         } catch (e) {
             return res.status(500).json({})
         }
-    }) */
+    })
 
     const PORT = 8000;
 
