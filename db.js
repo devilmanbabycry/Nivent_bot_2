@@ -1,7 +1,4 @@
 const {Sequelize} = require('sequelize');
-const User = require('/models')
-
-User.sync();
 
 module.exports = new Sequelize(
     'telega_bot_db',
