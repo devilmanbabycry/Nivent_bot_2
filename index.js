@@ -100,7 +100,6 @@ const start = async () => {
     app.get('/web-data', async (req, res) => {
         const events = await EventModel.findAll()
 
-        res.send('Все мероприятия: ')
         res.json(events)
         console.log(events)
     })
