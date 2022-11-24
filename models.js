@@ -12,6 +12,7 @@ const Event = sequelize.define('event', {
 }, {
     timestamps: false,
     createdAt: false,
+    tableName: 'event',
 })
 
 module.exports = Event;
