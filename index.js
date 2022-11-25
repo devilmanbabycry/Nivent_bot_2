@@ -4,6 +4,7 @@ const cors = require('cors');
 const sequelize = require('./db');
 const EventModel = require('./models')
 const {Sequelize} = require("sequelize");
+const PORT = 8000;
 
 const token = '5727297877:AAHXOLPsFjTNl80Dmmqz7PONLVUQ6e2dXKQ';
 const webAppUrl = 'https://unrivaled-zabaione-164aa2.netlify.app/';
@@ -104,7 +105,7 @@ const start = async () => {
         console.log(events)
     })
 
-    app.post('/web-data', async (req, res) => {
+/*    app.post('/web-data', async (req, res) => {
         const {queryId, products = [], totalPrice} = req.body;
         try {
             await bot.answerWebAppQuery(queryId, {
@@ -119,9 +120,7 @@ const start = async () => {
         } catch (e) {
             return res.status(500).json({})
         }
-    })
-
-    const PORT = 8000;
+    }) */
 
     app.listen(PORT, () => console.log('server started on PORT ' + PORT))
 }
