@@ -13,10 +13,12 @@ const webAppUrlForm = 'https://unrivaled-zabaione-164aa2.netlify.app/form';
 const bot = new TelegramBot(token, {polling: true});
 const app = express();
 
-app.use(express.json());
-app.use(cors());
 
 const start = async () => {
+
+    app.use(express.json());
+    app.use(cors());
+
     try {
         await sequelize.authenticate()
         await sequelize.sync()
