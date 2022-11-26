@@ -19,12 +19,12 @@ const start = async () => {
     app.use(express.json());
     app.use(cors());
 
-/*    try {
+    try {
         await sequelize.authenticate()
         await sequelize.sync()
     } catch (e) {
         console.log('Подключение к БД не удалось', e)
-    } */
+    }
 
     bot.setMyCommands([
         {command: '/start', description: 'Начало работы бота'},
