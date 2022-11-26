@@ -19,18 +19,18 @@ const start = async () => {
     app.use(express.json());
     app.use(cors());
 
-    try {
+/*    try {
         await sequelize.authenticate()
         await sequelize.sync()
     } catch (e) {
         console.log('Подключение к БД не удалось', e)
-    }
+    } */
 
     bot.setMyCommands([
         {command: '/start', description: 'Начало работы бота'},
         {command: '/list', description: 'Мероприятия'},
-        {command: '/info', description: 'Информация о проекте'},
         {command: '/create', description: 'Создание мероприятия'},
+        {command: '/info', description: 'Информация о проекте'},
     ])
 
     bot.on('message', async (msg) => {
@@ -38,7 +38,9 @@ const start = async () => {
         const text = msg.text;
 
         if (text === '/start') {
-            await bot.sendMessage(chatId, 'Бот находится в разработке, загляните позже');
+            await bot.sendPhoto(chatId, './nivent.jpg');
+            await bot.sendMessage(chatId, 'Добро пожаловать в бот Nivent! Здесь вы можете найти интересующее мероприятие или объявить о проведении своего события.');
+            await bot.sendMessage(chatId, 'Для продолжения нажмите команду /info');
         }
 
         if (text === '/list') {
