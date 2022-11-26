@@ -77,8 +77,10 @@ const start = async () => {
                 const newEvent = await EventModel.create({
                     name: data.name,
                     info: data.info,
-                    date: data.date,
-                    time: data.time,
+                    datebegin: data.datebegin,
+                    timebegin: data.timebegin,
+                    dateend: data.dateend,
+                    timeend: data.timeend,
                     address: data.address,
                     subject: data.subject,
                 })
