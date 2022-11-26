@@ -2,7 +2,7 @@ const sequelize = require('./db');
 const {DataTypes} = require('sequelize')
 
 const Event = sequelize.define('event', {
-    //id: {type: DataTypes.INTEGER, primaryKey: true, unique: true, autoIncrement: true},
+    id: {type: DataTypes.INTEGER, primaryKey: true, unique: true, autoIncrement: true},
     name: {type: DataTypes.STRING},
     info: {type: DataTypes.STRING},
     date_begin: {type: DataTypes.DATEONLY},
