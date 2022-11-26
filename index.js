@@ -72,7 +72,9 @@ const start = async () => {
         if (msg?.web_app_data?.data) {
             try {
                 const data = JSON.parse(msg?.web_app_data?.data)
-                //console.log(data)
+                console.log(data)
+                console.log('')
+                console.log('')
 
                 const newEvent = await EventModel.create({
                     name: data.name,
