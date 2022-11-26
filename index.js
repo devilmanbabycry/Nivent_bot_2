@@ -92,8 +92,10 @@ const start = async () => {
                 setTimeout(async () => {
                     await bot.sendMessage(chatId, 'Название: ' + data.name);
                     await bot.sendMessage(chatId, 'Информация: ' + data.info);
-                    await bot.sendMessage(chatId, 'Дата: ' + data.date);
-                    await bot.sendMessage(chatId, 'Время: ' + data.time);
+                    await bot.sendMessage(chatId, 'Дата начала: ' + data.date_begin);
+                    await bot.sendMessage(chatId, 'Время начала: ' + data.time_begin);
+                    await bot.sendMessage(chatId, 'Дата окончания: ' + data.date_end);
+                    await bot.sendMessage(chatId, 'Время окончания: ' + data.time_end);
                     //await bot.sendMessage(chatId, 'Ссылка на онлайн мероприятие: ' + data.link);
                     await bot.sendMessage(chatId, 'Адрес: ' + data.address);
                     await bot.sendMessage(chatId, 'Тег: ' + data.subject);
