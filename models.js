@@ -5,8 +5,10 @@ const Event = sequelize.define('event', {
     id: {type: DataTypes.INTEGER, primaryKey: true, unique: true, autoIncrement: true},
     name: {type: DataTypes.STRING},
     info: {type: DataTypes.STRING},
-    date: {type: DataTypes.DATEONLY},
-    time: {type: DataTypes.TIME},
+    datebegin: {type: DataTypes.DATEONLY},
+    timebegin: {type: DataTypes.TIME},
+    dateend: {type: DataTypes.DATEONLY},
+    timeend: {type: DataTypes.TIME},
     address: {type: DataTypes.STRING},
     subject: {type: DataTypes.STRING},
 }, {
