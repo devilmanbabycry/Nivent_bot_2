@@ -3,7 +3,7 @@ const {Sequelize} = require('sequelize');
 module.exports = new Sequelize(
     'nivent_bot',
     'root',
-    'T4#yKeympwJx',
+    'root',
     {
         host: 'localhost',
         port: '5432',
