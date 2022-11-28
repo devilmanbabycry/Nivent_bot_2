@@ -25,8 +25,8 @@ const options = {
     app.use(cors());
 
     try {
-        await sequelize.authenticate()
-        await sequelize.sync()
+        sequelize.authenticate()
+        sequelize.sync()
     } catch (e) {
         console.log('Подключение к БД не удалось', e)
     }
