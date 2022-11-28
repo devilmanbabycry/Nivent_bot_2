@@ -116,22 +116,22 @@ const start = async () => {
         console.log(events)
     })
 
-/*    app.post('/web-data', async (req, res) => {
+    app.post('/web-data', async (req, res) => {
         const {queryId, products = [], totalPrice} = req.body;
         try {
             await bot.answerWebAppQuery(queryId, {
                 type: 'article',
                 id: queryId,
-                title: 'Успешная покупка',
+                title: 'Запись успешна!',
                 input_message_content: {
-                    message_text: ` Поздравляю с покупкой, вы приобрели товар на сумму ${totalPrice}, ${products.map(item => item.title).join(', ')}`
+                    message_text: ` Вы записались на ${totalPrice}, ${products.map(item => item.title).join(', ')}`
                 }
             })
             return res.status(200).json({});
         } catch (e) {
             return res.status(500).json({})
         }
-    }) */
+    })
 
     app.listen(PORT, () => console.log('server started on PORT ' + PORT));
 }
