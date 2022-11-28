@@ -15,7 +15,7 @@ const app = express();
 
 
 const start = async () => {
-
+    app.use(express.static('static'));
     app.use(express.json());
     app.use(cors());
 
