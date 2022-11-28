@@ -1,4 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
+const https = require('https');
+const fs = require('fs');
 const express = require('express');
 const cors = require('cors');
 const sequelize = require('./db');
@@ -13,6 +15,10 @@ const webAppUrlForm = 'https://unrivaled-zabaione-164aa2.netlify.app/form';
 const bot = new TelegramBot(token, {polling: true});
 const app = express();
 
+const options = {
+    cert: fs.readFileSync('./fullchain.pem'),
+    key: fs.readFileSync('./privkey.pem')
+};
 
 const start = async () => {
     app.use(express.static('static'));
@@ -132,7 +138,8 @@ const start = async () => {
         }
     }) */
 
-    app.listen(PORT, () => console.log('server started on PORT ' + PORT))
+    app.listen(PORT, () => console.log('server started on PORT ' + PORT));
+    https.createServer(options, app).listen(8443);
 }
 
 start();
