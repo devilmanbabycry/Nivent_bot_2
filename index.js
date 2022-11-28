@@ -85,6 +85,7 @@ const start = async () => {
                     link_tg: data.link_tg,
                     address: data.address,
                     subject: data.subject,
+                    price: '1',
                 })
                 console.log(newEvent)
 

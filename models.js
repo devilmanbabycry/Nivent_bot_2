@@ -13,6 +13,7 @@ const Event = sequelize.define('event', {
     link_tg: {type: DataTypes.STRING},
     address: {type: DataTypes.STRING},
     subject: {type: DataTypes.STRING},
+    price: {type: DataTypes.STRING},
 }, {
     timestamps: false,
     createdAt: false,
