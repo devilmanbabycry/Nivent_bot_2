@@ -1,6 +1,4 @@
 const TelegramBot = require('node-telegram-bot-api');
-const https = require('https');
-const fs = require('fs');
 const express = require('express');
 const cors = require('cors');
 const sequelize = require('./db');
@@ -15,18 +13,14 @@ const webAppUrlForm = 'https://unrivaled-zabaione-164aa2.netlify.app/form';
 const bot = new TelegramBot(token, {polling: true});
 const app = express();
 
-const options = {
-    cert: fs.readFileSync('./fullchain.pem').toString(),
-    key: fs.readFileSync('./privkey.pem').toString(),
-};
-
+const start = async () => {
     app.use(express.static('static'));
     app.use(express.json());
     app.use(cors());
 
     try {
-        sequelize.authenticate()
-        sequelize.sync()
+        await sequelize.authenticate()
+        await sequelize.sync()
     } catch (e) {
         console.log('Подключение к БД не удалось', e)
     }
@@ -136,5 +130,8 @@ const options = {
             return res.status(500).json({})
         }
     }) */
-    https.createServer(options, app).listen(8083);
+
     app.listen(PORT, () => console.log('server started on PORT ' + PORT));
+}
+
+start();
