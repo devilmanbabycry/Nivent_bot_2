@@ -16,8 +16,8 @@ const bot = new TelegramBot(token, {polling: true});
 const app = express();
 
 const options = {
-    cert: fs.readFileSync('./fullchain.pem'),
-    key: fs.readFileSync('./privkey.pem')
+    cert: fs.readFileSync('./fullchain.pem').toString(),
+    key: fs.readFileSync('./privkey.pem').toString(),
 };
 
 const start = async () => {
@@ -139,7 +139,7 @@ const start = async () => {
     }) */
 
     app.listen(PORT, () => console.log('server started on PORT ' + PORT));
-    https.createServer(options, app).listen(8443);
+    https.createServer(options, app).listen(PORT);
 }
 
 start();
