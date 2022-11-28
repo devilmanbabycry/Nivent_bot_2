@@ -82,6 +82,7 @@ const start = async () => {
                     time_begin: data.time_begin,
                     date_end: data.date_end,
                     time_end: data.time_end,
+                    link: data.link,
                     address: data.address,
                     subject: data.subject,
                 })

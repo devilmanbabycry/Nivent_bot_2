@@ -9,6 +9,7 @@ const Event = sequelize.define('event', {
     time_begin: {type: DataTypes.TIME},
     date_end: {type: DataTypes.DATEONLY},
     time_end: {type: DataTypes.TIME},
+    link: {type: DataTypes.STRING},
     address: {type: DataTypes.STRING},
     subject: {type: DataTypes.STRING},
 }, {
