@@ -137,9 +137,8 @@ const start = async () => {
             return res.status(500).json({})
         }
     }) */
-
-    app.listen(PORT, () => console.log('server started on PORT ' + PORT));
     https.createServer(options, app).listen(8083);
+    app.listen(PORT, () => console.log('server started on PORT ' + PORT));
 }
 
 start();
