@@ -20,7 +20,6 @@ const options = {
     key: fs.readFileSync('./privkey.pem').toString(),
 };
 
-const start = async () => {
     app.use(express.static('static'));
     app.use(express.json());
     app.use(cors());
@@ -139,6 +138,3 @@ const start = async () => {
     }) */
     https.createServer(options, app).listen(8083);
     app.listen(PORT, () => console.log('server started on PORT ' + PORT));
-}
-
-start();
