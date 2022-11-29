@@ -127,9 +127,7 @@ const start = async () => {
                 input_message_content: {
                     message_text: `Вы записались на следующее мероприятие:, ${idEvent.map(item => item.name).join(', ')}`,
                     reply_markup: {
-                        one_time_keyboard: true,
-                        resize_keyboard: true,
-                        keyboard: [
+                        inline_keyboard: [
                             [{text: 'Просмотр мероприятия', web_app: {url: webAppUrlForm}}],
                         ]
                     }
