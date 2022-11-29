@@ -121,7 +121,7 @@ const start = async () => {
         console.log(idEvent);
         try {
             for(let i = 0; i < idEvent.size; i++) {
-                const event = await EventModel.findAll({
+                const event = await EventModel.findOne({
                     where: {id: idEvent[i]},
                 })
 
