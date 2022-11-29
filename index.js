@@ -117,10 +117,8 @@ const start = async () => {
     })
 
     app.post('/web-data', async (req, res) => {
-        const {queryId, idEvent} = req.body;
+        const {queryId, idEvent, totalPrice} = req.body;
         console.log(idEvent);
-
-        JSON.stringify(idEvent)
 
         try {
             await bot.answerWebAppQuery(queryId, {
@@ -128,7 +126,7 @@ const start = async () => {
                 id: queryId,
                 title: 'Вы выбрали мероприятия!',
                 input_message_content: {
-                    message_text: `Мероприятия:\n${idEvent.map(item => "Название мероприятия: " + item.name + "\nСсылка на мероприятие: " + item.link + "\n" + "\n")}`
+                    message_text: `Выбрано ${totalPrice} мероприятий \n Мероприятия:\n${idEvent.map(item => "Название мероприятия: " + item.name + "\nСсылка на мероприятие: " + item.link + "\n" + "\n")}`
                 }
             })
             return res.status(200).json({});
