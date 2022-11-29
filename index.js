@@ -39,13 +39,16 @@ const start = async () => {
             await bot.sendPhoto(chatId, './nivent.jpg');
             await bot.sendMessage(chatId, 'Добро пожаловать в бот Nivent! Здесь вы можете найти интересующее мероприятие или объявить о проведении своего события.');
             await bot.sendMessage(chatId, 'Для продолжения нажмите на Menu (кнопка выбора команд для бота)');
-            await bot.sendMessage(chatId, 'Для ознакомления с сервисом и командами бота нажмите команду /info')
+            await bot.sendMessage(chatId, 'Для ознакомления с сервисом и командами бота нажмите команду /info', {
+                reply_markup: {
+                    remove_keyboard: true,
+                }}
+            );
         }
 
         if (text === '/list') {
             await bot.sendMessage(chatId, 'Мероприятия можно посмотреть ниже', {
                 reply_markup: {
-                    one_time_keyboard: true,
                     inline_keyboard: [
                         [{text: 'Мероприятия', web_app: {url: webAppUrl}}],
                     ]
@@ -68,6 +71,7 @@ const start = async () => {
             await bot.sendMessage(chatId, 'Введите информацию о мероприятии в форме ниже.', {
                 reply_markup: {
                     one_time_keyboard: true,
+                    resize_keyboard: true,
                     keyboard: [
                         [{text: 'Форма для создания мероприятий', web_app: {url: webAppUrlForm}}],
                     ]
