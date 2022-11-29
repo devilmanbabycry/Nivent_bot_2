@@ -130,7 +130,7 @@ const start = async () => {
                 title: 'Запись успешна!',
                 input_message_content: {
                     message_text: "Вы записались на мероприятия!",
-
+                    entities: event,
                 }
             })
             return res.status(200).json({});
