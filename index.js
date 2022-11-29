@@ -121,12 +121,19 @@ const start = async () => {
         console.log(idEvent);
         try {
             await bot.answerWebAppQuery(queryId, {
+                type: 'photo',
+                id: queryId,
+                photo_file_id: './nivent.jpg'
+            })
+            await bot.answerWebAppQuery(queryId, {
                 type: 'article',
                 id: queryId,
                 title: 'Вы выбрали мероприятия!',
                 input_message_content: {
                     message_text: `Вы записались на следующее мероприятие: \n ${idEvent.map(item => item.name)}`,
-                    entities: 'idEvent',
+                    entities: {
+                        type: 'spoiler'
+                    }
                 }
             })
             return res.status(200).json({});
