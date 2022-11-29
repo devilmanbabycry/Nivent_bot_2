@@ -126,7 +126,7 @@ const start = async () => {
                 id: queryId,
                 title: 'Вы выбрали мероприятия!',
                 input_message_content: {
-                    message_text: `Выбрано мероприятий: ${totalPrice}\n\nМероприятия:\n\n${idEvent.map(item => "Название мероприятия \n" + item.name + "\nСсылка на мероприятие\n " + item.link + "\nСсылка на обратную связь\n " + item.link_tg + "\nИнформация о мероприятии\n " + item.info + "\nДата начала\n " + item.date_begin + "\nВремя начала\n " + item.time_begin + "\nДата окончания\n " + item.date_end + "\nВремя окончания\n " + item.time_end + "\nАдрес\n " + item.address + "\nКатегория мероприятия\n " + item.subject + "\n" + "\n").join('')}`
+                    message_text: `Выбрано мероприятий: ${totalPrice}\n\nМероприятия:\n\n${idEvent.map(item => "Название мероприятия:\n" + item.name + "\nСсылка на мероприятие:\n " + item.link + "\nСсылка на обратную связь:\n " + item.link_tg + "\nИнформация о мероприятии:\n " + item.info + "\nДата начала:\n " + item.date_begin + "\nВремя начала:\n " + item.time_begin + "\nДата окончания:\n " + item.date_end + "\nВремя окончания:\n " + item.time_end + "\nАдрес:\n " + item.address + "\nКатегория мероприятия:\n " + item.subject + "\n" + "\n").join('')}`
                 },
                 parse_mode: 'markdown'
             })
