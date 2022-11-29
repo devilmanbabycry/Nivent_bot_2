@@ -38,21 +38,31 @@ const start = async () => {
         if (text === '/start') {
             await bot.sendPhoto(chatId, './nivent.jpg');
             await bot.sendMessage(chatId, 'Добро пожаловать в бот Nivent! Здесь вы можете найти интересующее мероприятие или объявить о проведении своего события.');
-            await bot.sendMessage(chatId, 'Для продолжения нажмите команду /info');
+            await bot.sendMessage(chatId, 'Для продолжения нажмите на Menu (кнопка выбора команд для бота)');
+            await bot.sendMessage(chatId, 'Для ознакомления с сервисом и командами бота нажмите команду /info')
         }
 
         if (text === '/list') {
             await bot.sendMessage(chatId, 'Мероприятия можно посмотреть ниже', {
                 reply_markup: {
-                    inline_keyboard: [
-                        [{text: 'Мероприятия', web_app: {url: webAppUrl}}]
+                    one_time_keyboard: true,
+                    resize_keyboard: true,
+                    keyboard: [
+                        [{text: 'Мероприятия', web_app: {url: webAppUrl}}],
                     ]
                 }
             })
         }
 
         if (text === '/info') {
-            await bot.sendMessage(chatId, 'Информация о проекте (добавим потом)');
+            await bot.sendMessage(chatId, 'Информация о проекте (добавим потом)', {
+                reply_markup: {
+                    resize_keyboard: true,
+                    keyboard: [
+                        [{text: '1', }, {text: '2', }, {text: '3',}]
+                    ]
+                }
+            });
         }
 
         if (text === '/create') {
