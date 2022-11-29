@@ -120,10 +120,6 @@ const start = async () => {
         const {queryId, idEvent} = req.body;
         console.log(idEvent);
         try {
-            const event = await EventModel.findAll({
-                where: {id: idEvent},
-            })
-
             await bot.answerWebAppQuery(queryId, {
                 type: 'article',
                 id: queryId,
