@@ -117,7 +117,7 @@ const start = async () => {
     })
 
     app.post('/web-data', async (req, res) => {
-        const {queryId, idEvent = []} = JSON.parse(req.body);
+        const {queryId, idEvent = []} = req.body;
         console.log(queryId, idEvent);
         try {
             for(let i = 0; i < idEvent.size(); i++) {
