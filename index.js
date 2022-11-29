@@ -127,14 +127,14 @@ const start = async () => {
 
                 res.send(event);
 
-                await bot.answerWebAppQuery(queryId, {
+               /* await bot.answerWebAppQuery(queryId, {
                     type: 'article',
                     id: queryId,
                     title: 'Запись успешна!',
                     input_message_content: {
                         message_text: ` Вы записались на ${event}`
                     }
-                })
+                }) */
             }
             return res.status(200).json({});
         } catch (e) {
