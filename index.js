@@ -37,13 +37,12 @@ const start = async () => {
 
         if (text === '/start') {
             await bot.sendPhoto(chatId, './nivent.jpg');
-            await bot.sendMessage(chatId, 'Добро пожаловать в бот Nivent! Здесь вы можете найти интересующее мероприятие или объявить о проведении своего события.');
-            await bot.sendMessage(chatId, 'Для продолжения нажмите на Menu (кнопка выбора команд для бота)');
-            await bot.sendMessage(chatId, 'Для ознакомления с сервисом и командами бота нажмите команду /info', {
+            await bot.sendMessage(chatId, 'Добро пожаловать в бот Nivent! Здесь вы можете найти интересующее мероприятие или объявить о проведении своего события.', {
                 reply_markup: {
                     remove_keyboard: true,
-                }}
-            );
+                }});
+            await bot.sendMessage(chatId, 'Для продолжения нажмите на Menu (кнопка выбора команд для бота)');
+            await bot.sendMessage(chatId, 'Для ознакомления с сервисом и командами бота нажмите команду /info');
         }
 
         if (text === '/list') {
