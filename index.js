@@ -135,6 +135,18 @@ const start = async () => {
         }
     })
 
+    app.get('/web-data/:subject', async (req, res) => {
+        const subjectEvents = req.params.subject;
+        const events = await EventModel.findAll({
+            where: {
+                subject: subjectEvents,
+            }
+        })
+
+        res.json(events)
+        console.log(events)
+    })
+
     app.listen(PORT, () => console.log('server started on PORT ' + PORT));
 }
 
