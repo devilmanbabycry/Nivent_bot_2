@@ -104,15 +104,15 @@ const start = async () => {
                 await bot.sendMessage(chatId, 'Информация о созданном мероприятии: ');
 
                 setTimeout(async () => {
-                    await bot.sendMessage(chatId, 'Название: ' + data.name);
-                    await bot.sendMessage(chatId, 'Информация: ' + data.info);
+                    await bot.sendMessage(chatId, `Название: ${data.name}\nИнформация: ${data.info}\nДата начала: ${data.date_begin}\nВремя начала: ${data.time_begin}\nДата окончания: ${data.date_end}\nВремя окончания: ${data.time_end}\nСсылка на мероприятие: ${data.link}\nСсылка на обратную связь: ${data.link_tg}\nАдрес: ${data.address}\nКатегория: ${data.subject}`);
+                /*    await bot.sendMessage(chatId, 'Информация: ' + data.info);
                     await bot.sendMessage(chatId, 'Дата начала: ' + data.date_begin);
                     await bot.sendMessage(chatId, 'Время начала: ' + data.time_begin);
                     await bot.sendMessage(chatId, 'Дата окончания: ' + data.date_end);
                     await bot.sendMessage(chatId, 'Время окончания: ' + data.time_end);
-                    //await bot.sendMessage(chatId, 'Ссылка на онлайн мероприятие: ' + data.link);
+                    //await bot.sendMessage(chatId, 'Ссылка на мероприятие: ' + data.link);
                     await bot.sendMessage(chatId, 'Адрес: ' + data.address);
-                    await bot.sendMessage(chatId, 'Тег: ' + data.subject);
+                    await bot.sendMessage(chatId, 'Тег: ' + data.subject); */
                 }, 1000)
             } catch (e) {
                 console.log(e);
