@@ -44,6 +44,9 @@ const start = async () => {
 
         if (text === '/list') {
             await bot.sendMessage(chatId, 'Мероприятия можно посмотреть ниже', {
+                reply_keyboard_remove: {
+                    remove_keyboard: true
+                },
                 reply_markup: {
                     inline_keyboard: [
                         [{text: 'Мероприятия', web_app: {url: webAppUrl}}],
@@ -69,7 +72,6 @@ const start = async () => {
                 reply_markup: {
                     one_time_keyboard: true,
                     resize_keyboard: true,
-                    remove_keyboard: true,
                     keyboard: [
                         [{text: 'Форма для создания мероприятий', web_app: {url: webAppUrlForm}}],
                     ]
