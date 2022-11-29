@@ -120,23 +120,20 @@ const start = async () => {
         const {queryId, idEvent} = req.body;
         console.log(idEvent);
         try {
+            const event = await EventModel.findAll({
+                where: {id: idEvent},
+            })
 
-                const event = await EventModel.findAll({
-                    where: {id: idEvent},
-                })
+            console.log(event);
 
-
-                console.log(event);
-
-               /* await bot.answerWebAppQuery(queryId, {
-                    type: 'article',
-                    id: queryId,
-                    title: 'Запись успешна!',
-                    input_message_content: {
-                        message_text: ` Вы записались на ${event}`
-                    }
-                }) */
-
+            await bot.answerWebAppQuery(queryId, {
+                type: 'article',
+                id: queryId,
+                title: 'Запись успешна!',
+                input_message_content: {
+                    message_text: ` Вы записались на ${event}`
+                }
+            })
             return res.status(200).json({});
         } catch (e) {
             return res.status(500).json({})
