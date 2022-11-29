@@ -124,8 +124,6 @@ const start = async () => {
                 where: {id: idEvent},
             })
 
-            console.log(event);
-
             await bot.answerWebAppQuery(queryId, {
                 type: 'article',
                 id: queryId,
