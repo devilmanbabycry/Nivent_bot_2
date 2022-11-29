@@ -126,7 +126,7 @@ const start = async () => {
                 title: 'Вы выбрали мероприятия!',
                 input_message_content: {
                     message_text: `Вы записались на следующее мероприятие: \n ${idEvent.map(item => item.name)}`,
-                    entities: idEvent,
+                    entities: 'idEvent',
                 }
             })
             return res.status(200).json({});
