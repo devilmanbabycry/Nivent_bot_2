@@ -125,7 +125,7 @@ const start = async () => {
                 id: queryId,
                 title: 'Вы выбрали мероприятия!',
                 input_message_content: {
-                    message_text: `${idEvent.map(item => {item.name, item.link})}`,
+                    message_text: `${idEvent.map(item => {item.name; item.link})}`,
                 }
             })
             return res.status(200).json({});
