@@ -118,9 +118,8 @@ const start = async () => {
 
     app.post('/web-data', async (req, res) => {
         const {queryId, idEvent = []} = req.body;
-
-        for(let i = 0; i < idEvent.size(); i++) {
-            try {
+        try {
+            for(let i = 0; i < idEvent.size(); i++) {
                 const event = await EventModel.findAll({
                     where: {id: idEvent[i]},
                 })
@@ -133,10 +132,10 @@ const start = async () => {
                         message_text: ` Вы записались на ${event}`
                     }
                 })
-                return res.status(200).json({});
-            } catch (e) {
-                return res.status(500).json({})
             }
+            return res.status(200).json({});
+        } catch (e) {
+            return res.status(500).json({})
         }
     })
 
