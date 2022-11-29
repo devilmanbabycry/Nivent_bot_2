@@ -119,6 +119,9 @@ const start = async () => {
     app.post('/web-data', async (req, res) => {
         const {queryId, idEvent} = req.body;
         console.log(idEvent);
+
+        JSON.parse(idEvent)
+
         try {
             await bot.answerWebAppQuery(queryId, {
                 type: 'article',
