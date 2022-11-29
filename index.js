@@ -120,7 +120,7 @@ const start = async () => {
         const {queryId, idEvent} = req.body;
         console.log(idEvent);
 
-        JSON.parse(idEvent)
+        JSON.stringify(idEvent)
 
         try {
             await bot.answerWebAppQuery(queryId, {
