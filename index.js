@@ -36,7 +36,7 @@ const start = async () => {
         const text = msg.text;
 
         if (text === '/start') {
-            await bot.sendPhoto(chatId, './nivent.jpg');
+            await bot.sendPhoto(chatId, '/nivent.jpg');
             await bot.sendMessage(chatId, 'Добро пожаловать в бот Nivent! Здесь вы можете найти интересующее мероприятие или объявить о проведении своего события.', {
                 reply_markup: {
                     remove_keyboard: true,
