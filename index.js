@@ -56,7 +56,9 @@ const start = async () => {
         }
 
         if (text === '/info') {
-            await bot.sendMessage(chatId, 'Информация о проекте (добавим потом)', {
+            await bot.sendMessage(chatId, '1. Инструкция использования бота \n' +
+                '2. Общая информация о проекте\n' +
+                '3. Обратная связь, сотрудничество', {
                 reply_markup: {
                     resize_keyboard: true,
                     keyboard: [
@@ -64,6 +66,16 @@ const start = async () => {
                     ]
                 }
             });
+        }
+
+        if (text === '1'){
+            await bot.sendMessage(chatId, 'Инструкция использования бота')
+        }
+        if (text === '2'){
+            await bot.sendMessage(chatId, 'Общая информация о проекте')
+        }
+        if (text === '3'){
+            await bot.sendMessage(chatId, 'Обратная связь, сотрудничество')
         }
 
         if (text === '/create') {
