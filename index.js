@@ -117,19 +117,26 @@ const start = async () => {
     })
 
     app.post('/web-data', async (req, res) => {
-        const {queryId, products = [], totalPrice} = req.body;
-        try {
-            await bot.answerWebAppQuery(queryId, {
-                type: 'article',
-                id: queryId,
-                title: 'Запись успешна!',
-                input_message_content: {
-                    message_text: ` Вы записались на ${totalPrice}, ${products.map(item => item.title).join(', ')}`
-                }
-            })
-            return res.status(200).json({});
-        } catch (e) {
-            return res.status(500).json({})
+        const {queryId, idEvent = []} = req.body;
+
+        for(let i = 0; i < idEvent.size(); i++) {
+            try {
+                const event = await EventModel.findAll({
+                    where: {id: idEvent[i]},
+                })
+
+                await bot.answerWebAppQuery(queryId, {
+                    type: 'article',
+                    id: queryId,
+                    title: 'Запись успешна!',
+                    input_message_content: {
+                        message_text: ` Вы записались на ${event}`
+                    }
+                })
+                return res.status(200).json({});
+            } catch (e) {
+                return res.status(500).json({})
+            }
         }
     })
 
