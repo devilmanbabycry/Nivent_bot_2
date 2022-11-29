@@ -117,12 +117,12 @@ const start = async () => {
     })
 
     app.post('/web-data', async (req, res) => {
-        const {queryId, idEvent = []} = req.body;
+        const {queryId, idEvent} = req.body;
         console.log(idEvent);
         try {
-            for(let i = 0; i < idEvent.size(); i++) {
+
                 const event = await EventModel.findOne({
-                    where: {id: idEvent[i]},
+                    where: {id: idEvent},
                 })
 
 
@@ -136,7 +136,7 @@ const start = async () => {
                         message_text: ` Вы записались на ${event}`
                     }
                 }) */
-            }
+
             return res.status(200).json({});
         } catch (e) {
             return res.status(500).json({})
