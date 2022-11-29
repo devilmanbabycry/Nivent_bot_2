@@ -123,7 +123,7 @@ const start = async () => {
             await bot.answerWebAppQuery(queryId, {
                 type: 'photo',
                 id: queryId,
-                photo_file_id: './nivent.jpg'
+                photo_file_id: 'nivent.jpg'
             })
             await bot.answerWebAppQuery(queryId, {
                 type: 'article',
