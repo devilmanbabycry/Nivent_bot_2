@@ -127,10 +127,9 @@ const start = async () => {
             await bot.answerWebAppQuery(queryId, {
                 type: 'article',
                 id: queryId,
-                title: 'Запись успешна!',
+                title: 'Успешная покупка',
                 input_message_content: {
-                    message_text: "Вы записались на мероприятия!",
-                    entities: event,
+                    message_text: ` Поздравляю с покупкой, вы приобрели товар на сумму , ${idEvent.map(item => item.title).join(', ')}`
                 }
             })
             return res.status(200).json({});
