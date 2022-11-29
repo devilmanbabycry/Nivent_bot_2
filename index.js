@@ -125,7 +125,7 @@ const start = async () => {
                     where: {id: idEvent[i]},
                 })
 
-                res.send(event);
+                res.json(event);
 
                /* await bot.answerWebAppQuery(queryId, {
                     type: 'article',
