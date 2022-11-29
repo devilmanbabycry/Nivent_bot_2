@@ -118,12 +118,14 @@ const start = async () => {
 
     app.post('/web-data', async (req, res) => {
         const {queryId, idEvent = []} = req.body;
-        console.log(queryId, idEvent);
+        console.log(idEvent);
         try {
             for(let i = 0; i < idEvent.size(); i++) {
                 const event = await EventModel.findAll({
                     where: {id: idEvent[i]},
                 })
+
+                res.send(event);
 
                 await bot.answerWebAppQuery(queryId, {
                     type: 'article',
