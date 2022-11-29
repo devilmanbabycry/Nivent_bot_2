@@ -129,7 +129,8 @@ const start = async () => {
                 id: queryId,
                 title: 'Запись успешна!',
                 input_message_content: {
-                    message_text: ` Вы записались на мероприятия!`
+                    message_text: "Вы записались на мероприятия!",
+
                 }
             })
             return res.status(200).json({});
