@@ -129,7 +129,7 @@ const start = async () => {
                 id: queryId,
                 title: 'Успешная покупка',
                 input_message_content: {
-                    message_text: ` Поздравляю с покупкой, вы приобрели товар на сумму , ${idEvent.map(item => item.title).join(', ')}`
+                    message_text: ` Поздравляю с покупкой, вы приобрели товар на сумму`
                 }
             })
             return res.status(200).json({});
