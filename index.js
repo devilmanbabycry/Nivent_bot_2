@@ -125,7 +125,7 @@ const start = async () => {
                 id: queryId,
                 title: 'Вы выбрали мероприятия!',
                 input_message_content: {
-                    message_text: `Вы записались на следующее мероприятие:\nНазвание: "${idEvent.map(item => item.name)}"\nСсылка на мероприятие: ${idEvent.map(item => item.link)}\nСвязь с организатором: ${idEvent.map(item => item.link_tg)}\n`,
+                    message_text: `Спасибо за пользование ботом! Информацию о мероприятии можно найти по ссылкам ниже:\nНазвание мероприятия: "${idEvent.map(item => item.name)}"\nСсылка на мероприятие: ${idEvent.map(item => item.link)}\nСвязь с организатором: ${idEvent.map(item => item.link_tg)}\n`,
                 }
             })
             return res.status(200).json({});
