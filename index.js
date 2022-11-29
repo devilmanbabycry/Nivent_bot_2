@@ -125,7 +125,14 @@ const start = async () => {
                 id: queryId,
                 title: 'Вы выбрали мероприятия!',
                 input_message_content: {
-                    message_text: `Поздравляю с покупкой, вы приобрели товар на сумму, ${idEvent.map(item => item.name).join(', ')}`
+                    message_text: `Вы записались на следующее мероприятие:, ${idEvent.map(item => item.name).join(', ')}`,
+                    reply_markup: {
+                        one_time_keyboard: true,
+                        resize_keyboard: true,
+                        keyboard: [
+                            [{text: 'Просмотр мероприятия', web_app: {url: webAppUrlForm}}],
+                        ]
+                    }
                 }
             })
             return res.status(200).json({});
