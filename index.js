@@ -120,14 +120,17 @@ const start = async () => {
         const {queryId, idEvent} = req.body;
         console.log(idEvent);
         try {
-            await bot.answerWebAppQuery(queryId, {
-                type: 'article',
-                id: queryId,
-                title: 'Вы выбрали мероприятия!',
-                input_message_content: {
-                    message_text: `Спасибо за пользование ботом! Информацию о мероприятии можно найти по ссылкам ниже:\nНазвание мероприятия: "${idEvent.map(item => item.name)}"\nСсылка на мероприятие: ${idEvent.map(item => item.link)}\nСвязь с организатором: ${idEvent.map(item => item.link_tg)}\n`,
-                }
-            })
+            idEvent.map(async item =>
+                await bot.answerWebAppQuery(queryId, {
+                    type: 'article',
+                    id: queryId,
+                    title: item.name,
+                    input_message_content: {
+                        message_text: `${item.name}`,
+                    }
+                })
+            )
+
             return res.status(200).json({});
         } catch (e) {
             return res.status(500).json({})
