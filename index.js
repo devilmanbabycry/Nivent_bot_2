@@ -160,7 +160,7 @@ const start = async () => {
         const userId = req.params.id;
         console.log(userId)
 
-        await Event.destroy({
+        await Sequelize.Event.destroy({
             where: {
                 id: userId,
             }
