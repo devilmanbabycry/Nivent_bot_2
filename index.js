@@ -157,16 +157,15 @@ const start = async () => {
     })
 
     app.delete('/web-data/:id', async (req, res) => {
-        const userId = req.params.id;
-        console.log(userId)
+        const eventId = req.params.id;
 
-        await Sequelize.Event.destroy({
+        await EventModel.destroy({
             where: {
-                id: userId,
+                id: eventId,
             }
         })
 
-        res.send(`Удаление успешно ${userId}`)
+        res.send(`Удаление успешно ${eventId}`)
     })
 
 
