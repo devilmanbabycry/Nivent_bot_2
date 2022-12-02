@@ -156,13 +156,17 @@ const start = async () => {
         }
     })
 
-    app.delete('/web-data:id', async (req, res) => {
+    app.delete('/web-data/:id', async (req, res) => {
         const userId = req.params.id;
+        console.log(userId)
+
         await Event.destroy({
             where: {
                 id: userId,
             }
         })
+
+        res.send(`Удаление успешно ${userId}`)
     })
 
 
