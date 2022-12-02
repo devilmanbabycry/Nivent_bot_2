@@ -4,6 +4,7 @@ const cors = require('cors');
 const sequelize = require('./db');
 const EventModel = require('./models')
 const {Sequelize} = require("sequelize");
+const events = require("events");
 const PORT = 8000;
 
 const token = '5727297877:AAHXOLPsFjTNl80Dmmqz7PONLVUQ6e2dXKQ';
@@ -69,13 +70,21 @@ const start = async () => {
         }
 
         if (text === '1'){
-            await bot.sendMessage(chatId, 'Инструкция использования бота')
+            await bot.sendMessage(chatId, 'Использование бота осуществялется следующими командами:\n\n' +
+                '/list - команда для просмотра запланированных мероприятий.\n' +
+                'При нажатии на команду вам выскакивает кнопка "Мероприятия", после нажатия открывается форма со всеми мероприятиями. ' +
+                'Вы можете узнать подробную информацию о мероприятии нажав на него и записаться на него нажав на кнопку "+"' +
+                'После нажатия на "+" появиться кнопка "Записаться на мероприятие". Она осуществляет вывод информации о мероприятии вам в чат.\n\n' +
+                '/create - команда для создания мероприятия.\n' +
+                'После нажатия на команду у вас под клавиатурой появляется кнопка "Форма для создания мероприятия. Она открывает форму для заполнения данных по мероприятию.\n' +
+                'После заполнения всех пунктов формы появляется кнопка "Создать мероприятие"')
         }
         if (text === '2'){
-            await bot.sendMessage(chatId, 'Общая информация о проекте')
+            await bot.sendMessage(chatId, 'Общая информация о проекте\n' +
+                'Телеграмм бот для поиска мероприятий с широким фильтром по вашим интересам. Найди интересующее мероприятие или объяви о своём')
         }
         if (text === '3'){
-            await bot.sendMessage(chatId, 'Обратная связь, сотрудничество')
+            await bot.sendMessage(chatId, 'Для связи с администрацей напишите на электронную почту nivent.bot@gmail.com')
         }
 
         if (text === '/create') {
@@ -93,9 +102,6 @@ const start = async () => {
         if (msg?.web_app_data?.data) {
             try {
                 const data = JSON.parse(msg?.web_app_data?.data)
-                console.log(data)
-                console.log('')
-                console.log('')
 
                 const newEvent = await EventModel.create({
                     name: data.name,
@@ -148,6 +154,15 @@ const start = async () => {
         } catch (e) {
             return res.status(500).json({})
         }
+    })
+
+    app.delete('/web-data:id', async (req, res) => {
+        const userId = req.params.id;
+        await Event.destroy({
+            where: {
+                id: userId,
+            }
+        })
     })
 
 
