@@ -2,8 +2,8 @@ const {Sequelize} = require('sequelize');
 
 module.exports = new Sequelize(
     'nivent_bot',
-    'postgres',
-    'postgres ',
+    'postgres1',
+    'postgres1',
     {
         host: 'localhost',
         port: '5432',
